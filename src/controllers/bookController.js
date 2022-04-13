@@ -9,9 +9,7 @@ const createBook= async function (req, res) {
 
 const getParticularBook= async function (req, res) {
     let data= req.body
-    let savedData= await BookModel.find({
-        $or: [{bookName: data.bookName}, {authorName: data.authorName},{totalPages: data.totalPages},{stockAvailable: data.stockAvailable},{year: data.year}]
-    })
+    let savedData= await BookModel.find(data)
     res.send({msg: savedData})
 }
 
