@@ -13,6 +13,7 @@ router.post("/createAuthor", controller1.createAuthor  )
 router.post("/createPublisher", controller1.createPublisher)
 router.post("/createBook", controller1.createBook  )
 router.get("/getBooksWithAuthorPublisher", controller1.getBooksWithAuthorPublisher)
+router.put("/books/:name", controller1.hardCover)
 
 router.get("/getAuthorsData", authorController.getAuthorsData)
 
