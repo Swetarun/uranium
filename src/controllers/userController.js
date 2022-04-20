@@ -12,9 +12,10 @@ const basicCode= async function(req, res) {
     }
 
 
-const createAUser = function(req, res) {
+const createAUser = async function(req, res) {
     let requestBody = req.body
     let headers  = req.headers
+    let user= await UserModel.create(requestBody)
     
 
     //Printing all the headers before modification - addition of a new header called 'month'
@@ -31,6 +32,9 @@ const createAUser = function(req, res) {
 
     //Adding a new requets header
     req.headers["month"] = 'April' //req.headers.month = 'April' or req.headers["month"] = 'April'
+    req.headers["isFreeAppUser"] = 'False'
+
+    let appUser = headers['isFreeAppUser']
 
 
     //Printing the headers after modification - addition of a new header called 'month'
@@ -42,7 +46,7 @@ const createAUser = function(req, res) {
     //Adding a response header
     res.header('year', '2022')
 
-    res.send('Just create a user')
+    res.send({msg: user, appUser})
 }
 
 module.exports.createAUser = createAUser
